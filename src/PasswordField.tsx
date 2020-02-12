@@ -5,6 +5,6 @@ type Props = {
   label: string;
 };
 const PasswordField: React.FC<Props> = props => {
-  return <TextField {...props} />;
+  return <TextField fullWidth {...props} />;
 };
 export default PasswordField;

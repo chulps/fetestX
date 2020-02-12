@@ -9,7 +9,7 @@ type Props = {
 const InputField: React.FC<Props> = props => {
 
   return (
-    <TextField {...props} />
+    <TextField fullWidth {...props} />
   );
 };
 

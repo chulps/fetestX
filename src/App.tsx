@@ -1,15 +1,35 @@
+/** @jsx jsx */
+
 import React, { useState } from 'react';
+import { css, jsx } from '@emotion/core';
+
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { useTheme } from '@material-ui/core/styles';
 
 import FormController from './FormController';
 import InputField from './InputField';
 import PasswordField from './PasswordField';
 
-import './App.css';
-
 const App: React.FC<{}> = () => {
+  const theme = useTheme();
+  const style = css`
+    .wrapper {
+      height: 100vh;
+      width: 100vw;
+      background-color: bisque;
+    }
 
+    .inner {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .submit-button {
+      margin-top: ${theme.spacing(4)}px;
+    }
+
+  `;
   const [ submitValues, setSubmitValues ] = useState<string>('');
 
   const onSubmit = async (value: any): Promise<void> => {
@@ -17,7 +37,7 @@ const App: React.FC<{}> = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" css={style}>
       <div className="inner">
       <Typography variant="body1">
         Let&apos;s make a Form Library!
@@ -36,10 +56,10 @@ const App: React.FC<{}> = () => {
 
       </Typography>
       <FormController onSubmit={onSubmit}>
-        <InputField name="email" label="Email address?" />
-        <InputField name="full_name" label="Your full name here" />
-        <PasswordField name="password" label="Password" />
-        <Button type="submit" variant="outlined">Submit this form!</Button>
+        <InputField name="email" label="Email address?" /><br/>
+        <InputField name="full_name" label="Your full name here" /><br/>
+        <PasswordField name="password" label="Password" /><br/>
+        <Button className="submit-button" type="submit" variant="outlined">Submit this form!</Button>
       </FormController>
       {submitValues && (
         <Typography variant="body1">
@@ -47,7 +67,6 @@ const App: React.FC<{}> = () => {
           {submitValues}
         </Typography>
       )}
-
       </div>
     </div>
   );

@@ -1,73 +1,108 @@
 /** @jsx jsx */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { css, jsx } from '@emotion/core';
 
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { useTheme } from '@material-ui/core/styles';
+import Person from './Person';
 
-import FormController from './FormController';
-import InputField from './InputField';
-import PasswordField from './PasswordField';
+export type Credit = {
+  id: string;
+  productionType: string;
+  company: string;
+  position: string;
+  productionTitle: string;
+  year: number;
+};
+
+export type Account = {
+  id: string | number;
+  firstName: string;
+  lastName: string;
+  locationCity: string;
+  locationArea: string;
+  locationCountry: string;
+  accountImage: {
+    id: string;
+    url: string;
+  };
+  credits: Credit[];
+};
+
+const personData: Account = {
+  id: '1',
+  firstName: 'Alex',
+  lastName: 'Williamson',
+  locationCity: 'Los Angeles',
+  locationArea: 'CA',
+  locationCountry: 'USA',
+  accountImage: {
+    id: '11',
+    url: 'https://placekitten.com/200/200'
+  },
+  credits: [
+    {
+      id: '11',
+      productionType: 'Reality/Doc (TV)',
+      company: 'YouTube',
+      position: 'Camera Operator',
+      productionTitle: 'Hometown Movies Vol I',
+      year: 2016
+    },
+    {
+      id: '12',
+      productionType: 'Reality/Doc (TV)',
+      company: 'CineMax',
+      position: 'Camera Operator',
+      productionTitle: 'Hometown Movies Vol II',
+      year: 2016
+    },
+    {
+      id: '13',
+      productionType: 'Reality/Doc (TV)',
+      company: 'Vimeo',
+      position: 'Camera Operator',
+      productionTitle: 'Hometown Movies Vol III',
+      year: 2017
+    },
+    {
+      id: '14',
+      productionType: 'Reality/Doc (TV)',
+      company: 'Netflix',
+      position: 'Camera Operator',
+      productionTitle: 'Hometown Movies Vol IV',
+      year: 2017
+    },
+    {
+      id: '15',
+      productionType: 'Reality/Doc (TV)',
+      company: 'Netflix',
+      position: 'Camera Operator',
+      productionTitle: 'Hometown Movies Vol V',
+      year: 2018
+    }
+  ]
+};
+
+// import { useTheme } from '@material-ui/core/styles';
 
 const App: React.FC<{}> = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const style = css`
     .inner {
-      max-width: 500px;
-      margin: 0 auto;
-      margin-top: ${theme.spacing(10)}px;
-    }
-
-    .controller {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      height: 100vh;
+      width: 100vw;
     }
-
-    .submit-button {
-      margin-top: ${theme.spacing(4)}px;
-    }
-
   `;
-  const [ submitValues, setSubmitValues ] = useState<string>('');
-
-  const onSubmit = async (value: any): Promise<void> => {
-    setSubmitValues(JSON.stringify(value));
-  };
 
   return (
     <div className="container" css={style}>
       <div className="inner">
-        <Typography variant="body1">
-          Let&apos;s make a Form Library!
-        </Typography>
-
-        <Typography variant="body2">
-          Things to do:<br/><br/>
-
-          Make the password field show/hide its value<br/><br/>
-          Store the value of the form in an object taking the form of {`{ name: value }`}<br/><br/>
-          Keep this value in the state of {`<FormController>`}<br/><br/>
-          Submitting the form should run "onSubmit()"<br/><br/>
-
-
-
-
-        </Typography>
-        <FormController className="controller" onSubmit={onSubmit}>
-          <InputField name="email" label="Email address?" />
-          <InputField name="full_name" label="Your full name here" />
-          <PasswordField name="password" label="Password" />
-          <Button className="submit-button" type="submit" variant="outlined">Submit this form!</Button>
-        </FormController>
-        {submitValues && (
-          <Typography variant="body1">
-            You submitted<br/><br/>
-            {submitValues}
-          </Typography>
-        )}
+        <Person accountData={personData} />
       </div>
     </div>
   );

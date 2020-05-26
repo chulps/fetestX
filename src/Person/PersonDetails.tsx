@@ -2,7 +2,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { css, jsx } from '@emotion/core';
-import { useTheme } from '@material-ui/core/styles';
+// import { useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Account } from '../App';
 import PersonCredit from './PersonCredit';
@@ -21,7 +21,7 @@ const PersonDetails: React.FC<Props> = props => {
     maxCredits = 3
   } = props;
 
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const style = css`
     display: flex;

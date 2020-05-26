@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { css, jsx } from '@emotion/core';
+// import { useTheme } from '@material-ui/core/styles';
 
 import Person from './Person';
 
@@ -83,7 +84,7 @@ const personData: Account = {
   ]
 };
 
-// import { useTheme } from '@material-ui/core/styles';
+
 
 const App: React.FC<{}> = () => {
   // const theme = useTheme();

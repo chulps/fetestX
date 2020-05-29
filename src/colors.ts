@@ -1,6 +1,0 @@
-export const COLORS = {
-  BORDER_COLOR: "#E1E3EA",
-  BG_COLOR: "#FBFBFD",
-  LINK_COLOR: "#3f51b5",
-  LINK_SECONDARY_COLOR: "#3f51b588"
-};

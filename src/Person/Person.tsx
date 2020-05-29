@@ -1,14 +1,15 @@
 /** @jsx jsx */
 
-import React from 'react';
-import { css, jsx } from '@emotion/core';
-import cn from 'classnames';
-import { useTheme } from '@material-ui/core/styles';
+import React from "react";
+import { css, jsx } from "@emotion/core";
+import cn from "classnames";
+import { useTheme } from "@material-ui/core/styles";
 
-import PersonCard from './PersonCard';
-import { Account } from '../App';
-import PersonDetails from './PersonDetails';
-import { COLORS } from '../colors';
+import PersonCard from "./PersonCard";
+import { Account } from "../App";
+import PersonDetails from "./PersonDetails";
+import { COLORS } from "../colors";
+import "../responsive.css";
 
 type Props = {
   className?: string;
@@ -16,7 +17,7 @@ type Props = {
 };
 
 const Person: React.FC<Props> = props => {
-  const { className = '', accountData } = props;
+  const { className = "", accountData } = props;
   const theme = useTheme();
   const style = css`
     display: flex;
@@ -33,15 +34,12 @@ const Person: React.FC<Props> = props => {
 
     .PersonDetails-container {
       width: 500px;
-      padding: ${theme.spacing(1)}px;
-
-      border: 2px solid ${COLORS.BORDER_COLOR};
       border-left: none;
     }
   `;
 
   return (
-    <div className={cn(className, 'Person')} css={style}>
+    <div className="Person one-column lg-two-columns gap10 lg-gap30 p10 sm-p20 lg-p0 pb30">
       <div className="PersonCard-container">
         <PersonCard accountData={accountData} />
       </div>
@@ -49,7 +47,7 @@ const Person: React.FC<Props> = props => {
         <PersonDetails accountData={accountData} />
       </div>
     </div>
-  )
+  );
 };
 
 export default Person;

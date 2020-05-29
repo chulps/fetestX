@@ -1,29 +1,31 @@
 /** @jsx jsx */
-import React from 'react';
-import cn from 'classnames';
-import { css, jsx } from '@emotion/core';
-import { Account } from '../App';
-import Typography from '@material-ui/core/Typography';
-import { useTheme } from '@material-ui/core/styles';
-import { COLORS } from '../colors';
+import React from "react";
+import cn from "classnames";
+import { css, jsx } from "@emotion/core";
+import { Account } from "../App";
+import Typography from "@material-ui/core/Typography";
+import { useTheme } from "@material-ui/core/styles";
+import { COLORS } from "../colors";
 type Props = {
   className?: string;
   accountData: Account;
 };
 
 const PersonCard: React.FC<Props> = props => {
-  const { className = '', accountData } = props;
+  const { className = "", accountData } = props;
 
   const theme = useTheme();
 
   const style = css`
     display: flex;
     flex-direction: column;
-    background-color: ${COLORS.BG_COLOR};
-    border: 2px solid ${COLORS.BORDER_COLOR};
+    background-color: var(--siteBG);
+    border: none;
+    box-shadow: 6px 6px 12px #3f51b511, -6px -6px 12px rgba(255, 255, 255, 0.5);
     justify-content: center;
     align-items: center;
-    padding: ${theme.spacing(2)}px 0;
+    height: 100%;
+    border-radius: 1em;
 
     .PersonCard-Avatar {
       height: 150px;
@@ -34,7 +36,7 @@ const PersonCard: React.FC<Props> = props => {
 
     .link {
       color: ${COLORS.LINK_COLOR};
-      transition: color .4s ease;
+      transition: color 0.4s ease;
 
       &:hover {
         color: ${COLORS.LINK_SECONDARY_COLOR};
@@ -46,9 +48,9 @@ const PersonCard: React.FC<Props> = props => {
   const fullName = `${accountData.firstName} ${accountData.lastName}`;
 
   return (
-    <div className={cn(className, 'PersonCard')} css={style}>
+    <div className={cn(className, "PersonCard pt20 pb20 lg-p0")} css={style}>
       <img
-        className="PersonCard-Avatar"
+        className="PersonCard-Avatar mb10"
         src={accountData.accountImage.url}
         alt={fullName}
       />
@@ -60,8 +62,6 @@ const PersonCard: React.FC<Props> = props => {
       </Typography>
     </div>
   );
-
 };
 
 export default PersonCard;
-

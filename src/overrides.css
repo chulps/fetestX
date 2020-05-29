@@ -1,0 +1,45 @@
+/* ---------------- */
+/* CUSTOM OVERRIDES */
+/* ---------------- */
+:root {
+  --primary0: #3f51b5;
+  --transPrimary: #3f51b533;
+  --siteBG: #f0f1fa;
+}
+
+button.contact {
+  color: var(--primary0);
+  padding: 1em 2em;
+  background: var(--transPrimary);
+  box-shadow: 0px 0px 0px #3f51b500;
+  transition: none;
+}
+
+button.contact:hover {
+  background: #3f51b588;
+  box-shadow: 0 6px 12px #3f51b544;
+  transform: scale(1.01);
+  transition: 0.3s;
+}
+
+.PersonCard h6 {
+  color: #3f51b5;
+}
+
+h6.MuiTypography-root.link.MuiTypography-h6 {
+  font-weight: bold;
+}
+
+.PersonCredit .credit-bottom-left,
+.Credit .credit-bottom-right {
+  font-weight: 400;
+  color: gray;
+  font-size: 0.625rem;
+  display: flex;
+  align-items: center;
+}
+
+.PersonCredit .credit-bottom-right {
+  text-align: right;
+  justify-content: flex-end;
+}
